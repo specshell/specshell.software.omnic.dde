@@ -5,9 +5,9 @@
         /// <summary>
         /// This command retrieves version and copyright information for OMNIC and sets Result Current to About string. If invoked, the About Dialog box appears.
         /// </summary>
-        public static string About()
+        public static CommandResponse About()
         {
-            return Dde.Instance().ExecuteWithResponse("[About]");
+            return Execute("[About]", true);
         }
 
         /// <summary>
@@ -15,36 +15,36 @@
         /// 
         /// Throws exception if not exactly two spectra is selected.
         /// </summary>
-        public static string Add()
+        public static CommandResponse Add()
         {
-            return Dde.Instance().ExecuteWithResponse("[Add]");
+            return Execute("[Add]", true);
         }
 
 
         /// <summary>
         /// This command initiates a sample data collection.
         /// </summary>
-        public static string CollectSample(string sampleTitle) 
+        public static CommandResponse CollectSample(string sampleTitle) 
         {
-            return Dde.Instance().ExecuteWithResponse("[CollectSample\"\"" + sampleTitle + "\"\"]");
+            return Execute("[CollectSample\"\"" + sampleTitle + "\"\"]", true);
         }
 
 
         /// <summary>
         /// This command moves all spectra from the hidden DDE window to the current active spectral window or the specified spectral window.
         /// </summary>
-        public static string Display(string windowTitle = null) 
+        public static CommandResponse Display(string windowTitle = null) 
         {
             string command = windowTitle == null ? "[Display]" : "[Display " + windowTitle + "]";
-            return Dde.Instance().ExecuteWithResponse(command);
+            return Execute(command, true);
         }
 
         /// <summary>
         /// This command multiplies the entire spectrum by a factor and produces a new spectrum in the active spectral window.
         /// </summary>
-        public static string Multiply(double factor)
+        public static CommandResponse Multiply(double factor)
         {
-            return Dde.Instance().ExecuteWithResponse("[Multiply " + factor + "]");
+            return Execute("[Multiply " + factor + "]", true);
         }
 
         /// <summary>
@@ -53,10 +53,9 @@
         /// This command performs an advanced atr correction on the current selected spectrum.
         /// 
         /// </summary>
-        public static void AdvancedAtr(double crystalRefractiveIndex, double angleOfIncidenceDegrees, double numberOfBounces, double sampleRefractiveIndex)
+        public static CommandResponse AdvancedAtr(double crystalRefractiveIndex, double angleOfIncidenceDegrees, double numberOfBounces, double sampleRefractiveIndex)
         {
-            // Does not return a message
-            Dde.Instance().ExecuteWithResponse("[AdvancedATR " + crystalRefractiveIndex + " " + angleOfIncidenceDegrees + " " + numberOfBounces + " " + sampleRefractiveIndex + "]", 5000);
+            return Execute("[AdvancedATR " + crystalRefractiveIndex + " " + angleOfIncidenceDegrees + " " + numberOfBounces + " " + sampleRefractiveIndex + "]", false, 5000);
         }
 
 
@@ -65,20 +64,34 @@
         /// 
         /// The given filename must contain the entire path and the filename with the file extension. The given file extension determines the file type exported. 
         /// </summary>
-        public static void Export(string filename = null)
+        public static CommandResponse Export(string filename = null)
         {
             string command = filename == null ? "[Export]" : "[Export " + filename + "]";
-            Dde.Instance().ExecuteWithResponse(command);
+            return Execute(command, true);
         }
 
-        public static void SelectAll()
+        public static CommandResponse SelectAll()
         {
-            Dde.Instance().ExecuteWithResponse("[Select All]");
+            return Execute("[Select All]", true);
         }
 
-        public static void DeleteSelectedSpectra()
+        public static CommandResponse DeleteSelectedSpectra()
         {
-            Dde.Instance().ExecuteWithResponse("[DeleteSelectedSpectra]");
+            return Execute("[DeleteSelectedSpectra]", true);
+        }
+
+        private static CommandResponse Execute(string command, bool hasResultMessage, int timeOut = 500) 
+        {
+            try
+            {
+                Dde.Instance().Execute(command, timeOut);
+                string resultMessage = hasResultMessage ? Dde.Instance().ResultCurrent : null;
+                return new CommandResponse(true, resultMessage, null);
+            }
+            catch (NDde.DdeException e)
+            {
+                return new CommandResponse(false, null, e);
+            }
         }
     }
 }
