@@ -1,12 +1,47 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
     <TargetFramework>net5.0-windows</TargetFramework>
+    <AssemblyName>Specshell.OMNIC.DDE</AssemblyName>
+    <Authors>Spechell</Authors>
+    <Company>Specshell</Company>
+    <Description>DDE connector and commands for OMNIC</Description>
+    <PackageTags>DDE connector and commands for OMNIC</PackageTags>
+    <PackageProjectUrl>https://github.com/Specshell/specshell.software.omnic.dde</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Specshell/specshell.software.omnic.dde</RepositoryUrl>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <IncludeSymbols>true</IncludeSymbols>
+    <UseFullSemVerForNuGet>true</UseFullSemVerForNuGet>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(GITHUB_ACTIONS)' == 'true'">
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
     <PackageReference Include="Specshell.NDde" Version="3.0.1" />
   </ItemGroup>
+
+  <!-- Workaround for https://github.com/GitTools/GitVersion/issues/1031 -->
+  <PropertyGroup Condition=" '$(GitVersion_SemVer)' != ''">
+    <GetVersion>false</GetVersion>
+    <WriteVersionInfoToBuildLog>false</WriteVersionInfoToBuildLog>
+    <UpdateAssemblyInfo>false</UpdateAssemblyInfo>
+
+    <Version>$(GitVersion_FullSemVer)</Version>
+    <VersionPrefix>$(GitVersion_MajorMinorPatch)</VersionPrefix>
+    <VersionSuffix Condition=" '$(UseFullSemVerForNuGet)' == 'false' ">$(GitVersion_NuGetPreReleaseTag)</VersionSuffix>
+    <VersionSuffix Condition=" '$(UseFullSemVerForNuGet)' == 'true' ">$(GitVersion_PreReleaseTag)</VersionSuffix>
+    <PackageVersion Condition=" '$(UseFullSemVerForNuGet)' == 'false' ">$(GitVersion_NuGetVersion)</PackageVersion>
+    <PackageVersion Condition=" '$(UseFullSemVerForNuGet)' == 'true' ">$(GitVersion_FullSemVer)</PackageVersion>
+    <InformationalVersion Condition=" '$(InformationalVersion)' == '' ">$(GitVersion_InformationalVersion)</InformationalVersion>
+    <AssemblyVersion Condition=" '$(AssemblyVersion)' == '' ">$(GitVersion_AssemblySemVer)</AssemblyVersion>
+    <FileVersion Condition=" '$(FileVersion)' == '' ">$(GitVersion_AssemblySemFileVer)</FileVersion>
+    <RepositoryBranch Condition=" '$(RepositoryBranch)' == '' ">$(GitVersion_BranchName)</RepositoryBranch>
+    <RepositoryCommit Condition=" '$(RepositoryCommit)' == '' ">$(GitVersion_Sha)</RepositoryCommit>
+  </PropertyGroup>
 
 </Project>
