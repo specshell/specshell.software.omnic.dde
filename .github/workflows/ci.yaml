@@ -44,3 +44,14 @@ jobs:
         shell: pwsh
         run: |
           dotnet test --no-build --no-restore
+
+      - name: Push NuGet
+        if: |
+          startsWith(github.event.ref, 'refs/tags/')
+          || endsWith(github.event.ref, '/main')
+          || github.event.action == 'published'
+        shell: pwsh
+        run: dotnet nuget push **/*.symbols.nupkg --source $Env:SOURCE --api-key $Env:TOKEN
+        env:
+          SOURCE: 'https://nexus.specshell.systems/repository/nuget-hosted'
+          TOKEN: ${{ secrets.NEXUS_NUGET_API_KEY }}
