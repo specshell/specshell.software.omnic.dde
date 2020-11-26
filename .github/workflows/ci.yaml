@@ -45,6 +45,13 @@ jobs:
         run: |
           dotnet test --no-build --no-restore
 
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: omnic.nupkg
+          path: '**/*.symbols.nupkg'
+          retention-days: 3
+
       - name: Push NuGet
         if: |
           startsWith(github.event.ref, 'refs/tags/')
