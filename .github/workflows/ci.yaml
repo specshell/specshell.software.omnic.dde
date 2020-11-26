@@ -11,8 +11,9 @@ on:
     types: [published]
 
 jobs:
-  test:
+  build:
     runs-on: windows-latest
+    if: "! contains(toJSON(github.event.commits.*.message), '[skip-ci]')"
     name: Test
     steps:
       - name: Checkout
