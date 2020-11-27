@@ -1,11 +1,19 @@
 ﻿namespace specshell.software.omnic.dde
 {
-    public class Commands
+    public class CommandsHandler
     {
+        private readonly Dde dde;
+
+        public CommandsHandler(Dde dde)
+        {
+            this.dde = dde;
+        }
+
+
         /// <summary>
         /// This command retrieves version and copyright information for OMNIC and sets Result Current to About string. If invoked, the About Dialog box appears.
         /// </summary>
-        public static CommandResponse About()
+        public CommandResponse About()
         {
             return Execute("[About]", true);
         }
@@ -15,7 +23,7 @@
         /// 
         /// Throws exception if not exactly two spectra is selected.
         /// </summary>
-        public static CommandResponse Add()
+        public CommandResponse Add()
         {
             return Execute("[Add]", true);
         }
@@ -24,7 +32,7 @@
         /// <summary>
         /// This command initiates a sample data collection.
         /// </summary>
-        public static CommandResponse CollectSample(string sampleTitle) 
+        public CommandResponse CollectSample(string sampleTitle) 
         {
             return Execute("[CollectSample\"\"" + sampleTitle + "\"\"]", true);
         }
@@ -33,7 +41,7 @@
         /// <summary>
         /// This command moves all spectra from the hidden DDE window to the current active spectral window or the specified spectral window.
         /// </summary>
-        public static CommandResponse Display(string windowTitle = null) 
+        public CommandResponse Display(string windowTitle = null) 
         {
             string command = windowTitle == null ? "[Display]" : "[Display " + windowTitle + "]";
             return Execute(command, true);
@@ -42,7 +50,7 @@
         /// <summary>
         /// This command multiplies the entire spectrum by a factor and produces a new spectrum in the active spectral window.
         /// </summary>
-        public static CommandResponse Multiply(double factor)
+        public CommandResponse Multiply(double factor)
         {
             return Execute("[Multiply " + factor + "]", true);
         }
@@ -53,7 +61,7 @@
         /// This command performs an advanced atr correction on the current selected spectrum.
         /// 
         /// </summary>
-        public static CommandResponse AdvancedAtr(double crystalRefractiveIndex, double angleOfIncidenceDegrees, double numberOfBounces, double sampleRefractiveIndex)
+        public CommandResponse AdvancedAtr(double crystalRefractiveIndex, double angleOfIncidenceDegrees, double numberOfBounces, double sampleRefractiveIndex)
         {
             return Execute("[AdvancedATR " + crystalRefractiveIndex + " " + angleOfIncidenceDegrees + " " + numberOfBounces + " " + sampleRefractiveIndex + "]", false, 5000);
         }
@@ -64,28 +72,28 @@
         /// 
         /// The given filename must contain the entire path and the filename with the file extension. The given file extension determines the file type exported. 
         /// </summary>
-        public static CommandResponse Export(string filename = null)
+        public CommandResponse Export(string filename = null)
         {
             string command = filename == null ? "[Export]" : "[Export " + filename + "]";
             return Execute(command, true);
         }
 
-        public static CommandResponse SelectAll()
+        public CommandResponse SelectAll()
         {
             return Execute("[Select All]", true);
         }
 
-        public static CommandResponse DeleteSelectedSpectra()
+        public CommandResponse DeleteSelectedSpectra()
         {
             return Execute("[DeleteSelectedSpectra]", true);
         }
 
-        private static CommandResponse Execute(string command, bool hasResultMessage, int timeOut = 500) 
+        private CommandResponse Execute(string command, bool hasResultMessage, int timeOut = 500) 
         {
             try
             {
-                Dde.Instance().Execute(command, timeOut);
-                string resultMessage = hasResultMessage ? Dde.Instance().ResultCurrent : null;
+                dde.Execute(command, timeOut);
+                string resultMessage = hasResultMessage ? dde.ResultCurrent : null;
                 return new CommandResponse(true, resultMessage, null);
             }
             catch (NDde.DdeException e)
