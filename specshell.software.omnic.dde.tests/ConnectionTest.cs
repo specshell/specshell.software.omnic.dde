@@ -15,16 +15,5 @@ namespace specshell.software.omnic.dde.tests
             CommandResponse commandResponse = dde.CommandsHandler.About();
             Assert.IsTrue(commandResponse.ConnectionError());
         }
-
-        [TestMethod]
-        public void TemporaryTest()
-        {
-            Dde dde = new Dde();
-            dde.Connect();
-            CommandResponse commandResponse = dde.CommandsHandler.About();
-            Console.WriteLine(commandResponse.ResultMessage);
-            Console.WriteLine(commandResponse.DdeException);
-            Thread.Sleep(5 *  1000);
-        }
     }
 }
