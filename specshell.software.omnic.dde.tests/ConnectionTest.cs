@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace specshell.software.omnic.dde.tests
+namespace Specshell.OmnicDde
 {
     [TestClass]
     public class ConnectionTest

@@ -1,4 +1,4 @@
-﻿namespace specshell.software.omnic.dde
+﻿namespace Specshell.OmnicDde
 {
     public class CommandsHandler
     {
