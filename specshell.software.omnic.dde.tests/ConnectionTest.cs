@@ -1,6 +1,4 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Threading;
 
 namespace specshell.software.omnic.dde.tests
 {
@@ -8,6 +6,7 @@ namespace specshell.software.omnic.dde.tests
     public class ConnectionTest
     {
         [TestMethod]
+        [ExpectedException(typeof(NDde.DdeException))]
         public void TestConnectionException()
         {
             Dde dde = new Dde();
