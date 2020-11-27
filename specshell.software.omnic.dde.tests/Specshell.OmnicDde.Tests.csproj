@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\specshell.software.omnic.dde\specshell.software.omnic.dde.csproj" />
+    <ProjectReference Include="..\specshell.software.omnic.dde\Specshell.OmnicDde.csproj" />
   </ItemGroup>
 
 </Project>
