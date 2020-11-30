@@ -6,12 +6,12 @@ namespace Specshell.OmnicDde
     public class Dde
     {
         private DdeClient client;
-        public readonly CommandsHandler CommandsHandler;
+        public readonly CommandTable ExecuteCommand;
 
         public Dde()
         {
             client = new DdeClient("OMNIC", "SPECTRA");
-            CommandsHandler = new CommandsHandler(this);
+            ExecuteCommand = new CommandTable(this);
         }
         public void Connect()
         {

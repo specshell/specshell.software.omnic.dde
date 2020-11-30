@@ -1,10 +1,10 @@
 ﻿namespace Specshell.OmnicDde
 {
-    public class CommandsHandler
+    public class CommandTable
     {
         private readonly Dde dde;
 
-        public CommandsHandler(Dde dde)
+        public CommandTable(Dde dde)
         {
             this.dde = dde;
         }
@@ -13,9 +13,10 @@
         /// <summary>
         /// This command retrieves version and copyright information for OMNIC and sets Result Current to About string. If invoked, the About Dialog box appears.
         /// </summary>
-        public CommandResponse About()
+        public string About()
         {
-            return Execute("[About]", true);
+            dde.Execute("[About]");
+            return dde.ResultCurrent;
         }
 
         /// <summary>
@@ -23,36 +24,36 @@
         /// 
         /// Throws exception if not exactly two spectra is selected.
         /// </summary>
-        public CommandResponse Add()
+        public void Add()
         {
-            return Execute("[Add]", true);
+            dde.Execute("[Add]");
         }
 
 
         /// <summary>
         /// This command initiates a sample data collection.
         /// </summary>
-        public CommandResponse CollectSample(string sampleTitle) 
+        public void CollectSample(string sampleTitle) 
         {
-            return Execute("[CollectSample\"\"" + sampleTitle + "\"\"]", true);
+            dde.Execute("[CollectSample\"\"" + sampleTitle + "\"\"]");
         }
 
 
         /// <summary>
         /// This command moves all spectra from the hidden DDE window to the current active spectral window or the specified spectral window.
         /// </summary>
-        public CommandResponse Display(string windowTitle = null) 
+        public void Display(string windowTitle = null) 
         {
             string command = windowTitle == null ? "[Display]" : "[Display " + windowTitle + "]";
-            return Execute(command, true);
+            dde.Execute(command);
         }
 
         /// <summary>
         /// This command multiplies the entire spectrum by a factor and produces a new spectrum in the active spectral window.
         /// </summary>
-        public CommandResponse Multiply(double factor)
+        public void Multiply(double factor)
         {
-            return Execute("[Multiply " + factor + "]", true);
+            dde.Execute("[Multiply " + factor + "]");
         }
 
         /// <summary>
@@ -61,9 +62,9 @@
         /// This command performs an advanced atr correction on the current selected spectrum.
         /// 
         /// </summary>
-        public CommandResponse AdvancedAtr(double crystalRefractiveIndex, double angleOfIncidenceDegrees, double numberOfBounces, double sampleRefractiveIndex)
+        public void AdvancedAtr(double crystalRefractiveIndex, double angleOfIncidenceDegrees, double numberOfBounces, double sampleRefractiveIndex)
         {
-            return Execute("[AdvancedATR " + crystalRefractiveIndex + " " + angleOfIncidenceDegrees + " " + numberOfBounces + " " + sampleRefractiveIndex + "]", false, 5000);
+            dde.Execute("[AdvancedATR " + crystalRefractiveIndex + " " + angleOfIncidenceDegrees + " " + numberOfBounces + " " + sampleRefractiveIndex + "]", 5000);
         }
 
 
@@ -72,34 +73,20 @@
         /// 
         /// The given filename must contain the entire path and the filename with the file extension. The given file extension determines the file type exported. 
         /// </summary>
-        public CommandResponse Export(string filename = null)
+        public void Export(string filename = null)
         {
             string command = filename == null ? "[Export]" : "[Export " + filename + "]";
-            return Execute(command, true);
+            dde.Execute(command);
         }
 
-        public CommandResponse SelectAll()
+        public void SelectAll()
         {
-            return Execute("[Select All]", true);
+            dde.Execute("[Select All]");
         }
 
-        public CommandResponse DeleteSelectedSpectra()
+        public void DeleteSelectedSpectra()
         {
-            return Execute("[DeleteSelectedSpectra]", true);
-        }
-
-        private CommandResponse Execute(string command, bool hasResultMessage, int timeOut = 500) 
-        {
-            try
-            {
-                dde.Execute(command, timeOut);
-                string resultMessage = hasResultMessage ? dde.ResultCurrent : null;
-                return new CommandResponse(true, resultMessage, null);
-            }
-            catch (NDde.DdeException e)
-            {
-                return new CommandResponse(false, null, e);
-            }
+            dde.Execute("[DeleteSelectedSpectra]");
         }
     }
 }

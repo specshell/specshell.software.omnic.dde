@@ -11,8 +11,6 @@ namespace Specshell.OmnicDde
         {
             Dde dde = new Dde();
             dde.Connect();
-            CommandResponse commandResponse = dde.CommandsHandler.About();
-            Assert.IsTrue(commandResponse.ConnectionError());
         }
     }
 }
