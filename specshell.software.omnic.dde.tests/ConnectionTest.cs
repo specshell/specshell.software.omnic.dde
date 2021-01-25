@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Specshell.OmnicDde
+namespace Specshell.OmnicDde.Tests
 {
     [TestClass]
     public class ConnectionTest
@@ -9,8 +9,9 @@ namespace Specshell.OmnicDde
         [ExpectedException(typeof(NDde.DdeException))]
         public void TestConnectionException()
         {
-            Dde dde = new Dde();
-            dde.Connect();
+            var client = new OmnicDdeClient();
+            client.About();
+            client.Connect();
         }
     }
 }
