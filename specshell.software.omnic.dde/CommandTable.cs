@@ -21,7 +21,7 @@
 
         /// <summary>
         /// This command adds the two selected spectra together to produce a new spectrum.
-        /// 
+        ///
         /// Throws exception if not exactly two spectra is selected.
         /// </summary>
         public void Add()
@@ -33,16 +33,16 @@
         /// <summary>
         /// This command initiates a sample data collection.
         /// </summary>
-        public void CollectSample(string sampleTitle) 
+        public void CollectSample(string sampleTitle)
         {
-            dde.Execute("[CollectSample\"\"" + sampleTitle + "\"\"]");
+            dde.Execute("[CollectSample \"\"" + sampleTitle + "\"\"]");
         }
 
 
         /// <summary>
         /// This command moves all spectra from the hidden DDE window to the current active spectral window or the specified spectral window.
         /// </summary>
-        public void Display(string windowTitle = null) 
+        public void Display(string windowTitle = null)
         {
             string command = windowTitle == null ? "[Display]" : "[Display " + windowTitle + "]";
             dde.Execute(command);
@@ -58,9 +58,9 @@
 
         /// <summary>
         /// This command is not documented in the pdf.
-        /// 
+        ///
         /// This command performs an advanced atr correction on the current selected spectrum.
-        /// 
+        ///
         /// </summary>
         public void AdvancedAtr(double crystalRefractiveIndex, double angleOfIncidenceDegrees, double numberOfBounces, double sampleRefractiveIndex)
         {
@@ -70,8 +70,8 @@
 
         /// <summary>
         /// This command saved the selected spectrum on a disk. If no filename is specified the operator will be prompted for a filename.
-        /// 
-        /// The given filename must contain the entire path and the filename with the file extension. The given file extension determines the file type exported. 
+        ///
+        /// The given filename must contain the entire path and the filename with the file extension. The given file extension determines the file type exported.
         /// </summary>
         public void Export(string filename = null)
         {
