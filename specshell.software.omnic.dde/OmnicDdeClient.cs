@@ -16,6 +16,11 @@ namespace Specshell.OmnicDde
             client.Connect();
         }
 
+        public void Disconnect()
+        {
+            client.Disconnect();
+        }
+
         public void Execute(string command, int timeout = 500)
         {
             client.Execute(command, timeout);

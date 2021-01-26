@@ -52,5 +52,6 @@
 
         void SelectAll();
         void DeleteSelectedSpectra();
+        void Disconnect();
     }
 }
