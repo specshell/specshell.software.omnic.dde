@@ -45,6 +45,7 @@ namespace Specshell.OmnicDde
 
         public void Disconnect()
         {
+            client.Disconnected -= OnDisconnected;
             client.Disconnect();
         }
 
