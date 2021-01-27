@@ -1,19 +1,46 @@
-﻿using NDde.Client;
+﻿using System;
+using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
+using NDde;
+using NDde.Client;
 
 namespace Specshell.OmnicDde
 {
     public class OmnicDdeClient : IOmnicDdeClient
     {
+        private readonly ILogger<OmnicDdeClient> _logger;
         private DdeClient client;
 
-        public OmnicDdeClient()
+        public OmnicDdeClient(ILogger<OmnicDdeClient> logger)
         {
+            _logger = logger;
             client = new DdeClient("OMNIC", "SPECTRA");
         }
 
         public void Connect()
         {
             client.Connect();
+            client.Disconnected += OnDisconnected;
+        }
+
+        private async void OnDisconnected(object? sender, DdeDisconnectedEventArgs e)
+        {
+            while (!client.IsConnected)
+            {
+                try
+                {
+                    client.Connect();
+                    if (!client.IsConnected) await Task.Delay(1000);
+                }
+                catch (DdeException ex)
+                {
+                    _logger.Log(LogLevel.Information, "Connection attempt failed, retrying", ex);
+                }
+                catch (InvalidOperationException)
+                {
+                    _logger.Log(LogLevel.Trace, "Already connected");
+                }
+            }
         }
 
         public void Disconnect()
