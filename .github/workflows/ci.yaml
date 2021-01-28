@@ -12,7 +12,7 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-20.04
     if: "! contains(toJSON(github.event.commits.*.message), '[skip-ci]')"
     name: Test
     steps:
@@ -50,7 +50,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: omnic.nupkg
-          path: '**/*.symbols.nupkg'
+          path: "**/*.symbols.nupkg"
           retention-days: 3
 
       - name: Push NuGet
@@ -61,5 +61,5 @@ jobs:
         shell: pwsh
         run: dotnet nuget push **/*.symbols.nupkg --source $Env:SOURCE --api-key $Env:TOKEN
         env:
-          SOURCE: 'https://nexus.specshell.systems/repository/nuget-hosted'
+          SOURCE: "https://nexus.specshell.systems/repository/nuget-hosted"
           TOKEN: ${{ secrets.NEXUS_NUGET_API_KEY }}
