@@ -1,6 +1,6 @@
 ﻿namespace Specshell.Omnic.Dde.Commands
 {
-    public class About : ICommand
+    public class About : IDdeCommand
     {
         public string Command => "[About]";
 

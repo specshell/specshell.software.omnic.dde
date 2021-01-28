@@ -1,6 +1,6 @@
 ﻿namespace Specshell.Omnic.Dde.Commands
 {
-    public interface ICommand
+    public interface IDdeCommand
     {
         string Command { get; }
 

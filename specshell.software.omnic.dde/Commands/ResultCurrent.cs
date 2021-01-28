@@ -1,6 +1,6 @@
 ﻿namespace Specshell.Omnic.Dde.Commands
 {
-    public class ResultCurrent : ICommand
+    public class ResultCurrent : IDdeCommand
     {
         public string Command => "Result Current";
 

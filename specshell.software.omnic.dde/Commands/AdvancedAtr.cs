@@ -1,6 +1,6 @@
 ﻿namespace Specshell.Omnic.Dde.Commands
 {
-    public class AdvancedAtr : ICommand
+    public class AdvancedAtr : IDdeCommand
     {
         private readonly double _crystalRefractiveIndex;
         private readonly double _angleOfIncidenceDegrees;

@@ -1,6 +1,6 @@
 ﻿namespace Specshell.Omnic.Dde.Commands
 {
-    public class Multiply : ICommand
+    public class Multiply : IDdeCommand
     {
         private readonly double _factor;
 

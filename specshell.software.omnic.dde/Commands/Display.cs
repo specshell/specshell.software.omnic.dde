@@ -1,6 +1,6 @@
 ﻿namespace Specshell.Omnic.Dde.Commands
 {
-    public class Display : ICommand
+    public class Display : IDdeCommand
     {
         private readonly string _windowTitle;
 

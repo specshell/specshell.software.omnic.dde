@@ -1,6 +1,6 @@
 ﻿namespace Specshell.Omnic.Dde.Commands
 {
-    public class Add : ICommand
+    public class Add : IDdeCommand
     {
         public string Command => "[Add]";
 

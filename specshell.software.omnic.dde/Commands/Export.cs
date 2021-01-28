@@ -1,6 +1,6 @@
 ﻿namespace Specshell.Omnic.Dde.Commands
 {
-    public class Export : ICommand
+    public class Export : IDdeCommand
     {
         private readonly string _filename;
 

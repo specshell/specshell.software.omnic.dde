@@ -1,8 +1,8 @@
 ﻿namespace Specshell.Omnic.Dde.Commands
 {
-    public class AnyCommand : ICommand
+    public class AnyDdeCommand : IDdeCommand
     {
-        public AnyCommand(string command, CommandType commandType)
+        public AnyDdeCommand(string command, CommandType commandType)
         {
             Command = command;
             Type = commandType;

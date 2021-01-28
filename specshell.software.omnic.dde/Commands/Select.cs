@@ -1,6 +1,6 @@
 ﻿namespace Specshell.Omnic.Dde.Commands
 {
-    public class Select : ICommand
+    public class Select : IDdeCommand
     {
         private readonly string _select;
 

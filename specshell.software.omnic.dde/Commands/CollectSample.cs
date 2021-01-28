@@ -1,6 +1,6 @@
 ﻿namespace Specshell.Omnic.Dde.Commands
 {
-    public class CollectSample : ICommand
+    public class CollectSample : IDdeCommand
     {
         private readonly string _sampleTitle;
 

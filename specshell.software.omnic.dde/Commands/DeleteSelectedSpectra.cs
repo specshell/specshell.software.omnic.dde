@@ -1,6 +1,6 @@
 ﻿namespace Specshell.Omnic.Dde.Commands
 {
-    public class DeleteSelectedSpectra : ICommand
+    public class DeleteSelectedSpectra : IDdeCommand
     {
         public DeleteSelectedSpectra()
         {
