@@ -2,7 +2,6 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0-windows</TargetFramework>
-
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 
@@ -14,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\specshell.software.omnic.dde\Specshell.OmnicDde.csproj" />
+    <ProjectReference Include="..\specshell.software.omnic.dde\Specshell.Omnic.Dde.csproj" />
   </ItemGroup>
 
 </Project>

@@ -2,7 +2,6 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0-windows</TargetFramework>
-    <AssemblyName>Specshell.OMNIC.DDE</AssemblyName>
     <Authors>Spechell</Authors>
     <Company>Specshell</Company>
     <Description>DDE connector and commands for OMNIC</Description>

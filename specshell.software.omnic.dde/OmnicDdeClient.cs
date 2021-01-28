@@ -3,117 +3,105 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using NDde;
 using NDde.Client;
+using Specshell.Omnic.Dde.Commands;
 
-namespace Specshell.OmnicDde
+namespace Specshell.Omnic.Dde
 {
     public class OmnicDdeClient : IOmnicDdeClient
     {
         private readonly ILogger<OmnicDdeClient> _logger;
         private DdeClient client;
+        private int _timeout;
+
+        public TimeSpan Timeout
+        {
+            get => TimeSpan.FromMilliseconds(_timeout);
+            set => _timeout = (int) value.TotalMilliseconds;
+        }
 
         public OmnicDdeClient(ILogger<OmnicDdeClient> logger)
         {
             _logger = logger;
             client = new DdeClient("OMNIC", "SPECTRA");
+            Timeout = TimeSpan.FromMinutes(10);
         }
 
-        public void Connect()
+        public async Task<bool> Connect(bool retryConnect)
         {
-            client.Connect();
-            client.Disconnected += OnDisconnected;
-        }
-
-        private async void OnDisconnected(object? sender, DdeDisconnectedEventArgs e)
-        {
-            while (!client.IsConnected)
+            var connected = false;
+            if (retryConnect)
+            {
+                while (!connected)
+                {
+                    try
+                    {
+                        await Task.Run(() => client.Connect());
+                        connected = client.IsConnected;
+                        if (connected) _logger.LogInformation("Connected");
+                        else await Task.Delay(500);
+                    }
+                    catch (DdeException)
+                    {
+                        _logger.LogDebug("Failed to connect, retrying");
+                    }
+                    catch (InvalidOperationException)
+                    {
+                        connected = client.IsConnected;
+                    }
+                    catch (Exception e)
+                    {
+                        _logger.LogWarning("Unknown exception thrown", e);
+                    }
+                }
+            }
+            else
             {
                 try
                 {
-                    client.Connect();
-                    if (!client.IsConnected) await Task.Delay(1000);
-                }
-                catch (DdeException ex)
-                {
-                    _logger.Log(LogLevel.Information, "Connection attempt failed, retrying", ex);
+                    await Task.Run(() => client.Connect());
+                    connected = client.IsConnected;
+                    _logger.LogInformation("Connected");
                 }
                 catch (InvalidOperationException)
                 {
-                    _logger.Log(LogLevel.Trace, "Already connected");
+                    connected = client.IsConnected;
+                    _logger.LogDebug("Already connected");
                 }
             }
+
+            return connected;
         }
 
-        public void Disconnect()
+        public Task Disconnect()
         {
-            client.Disconnected -= OnDisconnected;
-            client.Disconnect();
+            return Task.Run(() => client.Disconnect());
         }
 
-        public void Execute(string command, int timeout = 500)
+        public async Task<string> Execute(string command)
         {
-            client.Execute(command, timeout);
+            await Task.Run(() => client.Execute(command, _timeout));
+            return "";
         }
 
-        public void Poke(string item, string data, int timeout = 500)
+        public async Task<string> Poke(string item, string data)
         {
-            client.Poke(item, data, timeout);
+            await Task.Run(() => client.Poke(item, data, _timeout));
+            return "";
         }
 
-        public string Request(string item, int timeout = 500)
+        public Task<string> Request(string item) => Task.Run(() => client.Request(item, _timeout));
+
+        public async Task<string> Run(ICommand command, string data = "")
         {
-            return client.Request(item, timeout);
-        }
+            var cmd = command.Command;
 
-        public string ResultCurrent => Request("Result Current", 1000);
-
-
-        public string About()
-        {
-            Execute("[About]");
-            return ResultCurrent;
-        }
-
-        public void Add()
-        {
-            Execute("[Add]");
-        }
-
-        public void CollectSample(string sampleTitle)
-        {
-            Execute("[CollectSample \"\"" + sampleTitle + "\"\"]");
-        }
-
-        public void Display(string windowTitle = null)
-        {
-            string command = windowTitle == null ? "[Display]" : "[Display " + windowTitle + "]";
-            Execute(command);
-        }
-
-        public void Multiply(double factor)
-        {
-            Execute("[Multiply " + factor + "]");
-        }
-
-        public void AdvancedAtr(double crystalRefractiveIndex, double angleOfIncidenceDegrees, double numberOfBounces, double sampleRefractiveIndex)
-        {
-            Execute("[AdvancedATR " + crystalRefractiveIndex + " " + angleOfIncidenceDegrees + " " + numberOfBounces + " " + sampleRefractiveIndex + "]", 5000);
-        }
-
-
-        public void Export(string filename = null)
-        {
-            string command = filename == null ? "[Export]" : "[Export " + filename + "]";
-            Execute(command);
-        }
-
-        public void SelectAll()
-        {
-            Execute("[Select All]");
-        }
-
-        public void DeleteSelectedSpectra()
-        {
-            Execute("[DeleteSelectedSpectra]");
+            return command.Type switch
+            {
+                CommandType.Execute => await Execute(cmd),
+                CommandType.Poke => await Poke(cmd, data),
+                CommandType.Request => await Request(cmd),
+                _ => "",
+            };
         }
     }
 }
