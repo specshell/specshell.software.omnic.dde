@@ -4,13 +4,13 @@ This repository contains a small application for establishing a DDE connection t
 
 These operations will fail if Omnic is not running and this application is not responsible for ensuring that Omnic is running.
 
-Thermo Fisher has supplied an [article](./docs/OMNIC_DDE_Commands_&_Parameters) for DDE commands supported by Omnic, however it has been found that Omnic supports the *[advanced ATR]* DDE call, which is not documented in the article.
+Thermo Fisher has supplied an [article](./docs/OMNIC_DDE_Commands_&_Parameters.pdf) for DDE commands supported by Omnic, however it has been found that Omnic supports the *[advanced ATR]* DDE call, which is not documented in the article.
 
 This hints that Omnic might support other DDE commands not mentioned in the article.
 
 ### Considerations of making the repository open source ###
 
-It is intended that this repository contains individual DDE commands and *not* sequence of commands. 
+It is intended that this repository contains individual DDE commands and *not* sequence of commands.
 
 Hence it can be argued that the repository does not reveal how Specshell specifically operates with Omnic.
 
