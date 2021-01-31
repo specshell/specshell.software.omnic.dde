@@ -29,7 +29,7 @@
             return spectrum;
         }
 
-        public string Command => $"Spectrum ${_parameter}";
+        public string Command => $"Spectrum {_parameter}";
         public string Data { get; private set; } = string.Empty;
 
         public CommandType Type { get; private set; } = CommandType.Request;
