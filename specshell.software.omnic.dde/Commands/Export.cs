@@ -2,14 +2,16 @@
 {
     public class Export : IDdeCommand
     {
-        private readonly string _filename;
+        private readonly string _path;
 
-        public Export(string filename = "")
+        public Export(string path = "")
         {
-            _filename = filename;
+            _path = path;
         }
 
-        public string Command => string.IsNullOrWhiteSpace(_filename) ? "[Export]" : $"[Export {_filename}]";
+        public string Command => string.IsNullOrWhiteSpace(_path) ? "[Export]" : $"[Export {_path}]";
+
+        public string Data { get; } = string.Empty;
 
         public CommandType Type => CommandType.Execute;
     }

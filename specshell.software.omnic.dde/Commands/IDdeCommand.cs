@@ -4,6 +4,8 @@
     {
         string Command { get; }
 
+        string Data { get; }
+
         CommandType Type { get; }
     }
 

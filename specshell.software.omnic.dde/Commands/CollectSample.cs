@@ -11,6 +11,8 @@
 
         public string Command => string.IsNullOrWhiteSpace(_sampleTitle) ? "[CollectSample]" : "[CollectSample \"\"" + _sampleTitle + "\"\"]";
 
+        public string Data { get; } = string.Empty;
+
         public CommandType Type => CommandType.Execute;
     }
 }

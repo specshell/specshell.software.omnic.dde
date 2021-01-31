@@ -2,11 +2,9 @@
 {
     public class DeleteSelectedSpectra : IDdeCommand
     {
-        public DeleteSelectedSpectra()
-        {
-        }
-
         public string Command => "[DeleteSelectedSpectra]";
+
+        public string Data { get; } = string.Empty;
 
         public CommandType Type => CommandType.Execute;
     }

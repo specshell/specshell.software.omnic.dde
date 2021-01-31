@@ -9,7 +9,11 @@
             _select = select;
         }
 
+        public static Select All() => new("All");
+
         public string Command => string.IsNullOrWhiteSpace(_select) ? "[Select]" : $"[Select {_select}]";
+
+        public string Data { get; } = string.Empty;
 
         public CommandType Type => CommandType.Execute;
     }
