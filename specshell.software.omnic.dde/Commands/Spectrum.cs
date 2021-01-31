@@ -13,6 +13,7 @@
         public static Spectrum Noise() => new("Noise");
         public static Spectrum PeakHeight() => new("PeakHeight");
         public static Spectrum XAxisId() => new Spectrum("XAxisID");
+        public static Spectrum YAxisId() => new Spectrum("YAxisID");
 
         /// <summary>
         /// Command to Retrieve or Set Spectrum Title.
