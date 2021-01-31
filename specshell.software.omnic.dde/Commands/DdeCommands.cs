@@ -13,6 +13,7 @@
 
         public static CollectSample CollectSample(string sampleTitle = "") => new(sampleTitle);
         public static Export Export(string path = "") => new (path);
+        public static DeleteSelectedSpectra DeleteSelectedSpectra => new DeleteSelectedSpectra();
         public static Display Display(string select = "") => new(select);
         public static Multiply Multiply(double factor) => new (factor);
         public static ResultCurrent ResultCurrent => new ResultCurrent();
