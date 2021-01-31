@@ -25,5 +25,6 @@
         public static Spectrum SpectrumPeakHeight => Spectrum.PeakHeight();
         public static Spectrum SpectrumTitle(string title = "") => Spectrum.Title(title);
         public static Spectrum SpectrumXAxisId => Spectrum.XAxisId();
+        public static Spectrum SpectrumYAxisId => Spectrum.YAxisId();
     }
 }
