@@ -13,6 +13,7 @@
 
         public static AutoTune AutoTune() => new();
         public static Collect ColectBackgroundFileName(string fileName = "") => Collect.BackgroundFileName(fileName);
+        public static Collect CollectFinalFormat() => Collect.FinalFormat();
         public static Collect CollectFinalFormatInterferogram() => Collect.FinalFormatInterferogram();
         public static Collect CollectFinalFormatAbsorbance() => Collect.FinalFormatAbsorbance();
         public static Collect CollectFinalFormatSingleBeam() => Collect.FinalFormatSingleBeam();
