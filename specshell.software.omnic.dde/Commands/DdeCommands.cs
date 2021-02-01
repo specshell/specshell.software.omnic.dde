@@ -13,7 +13,9 @@
 
         public static AutoTune AutoTune() => new();
         public static Collect ColectBackgroundFileName(string fileName = "") => Collect.BackgroundFileName(fileName);
-        public static Collect CollectFinalFormat(string format = "") => Collect.FinalFormat(format);
+        public static Collect CollectFinalFormatInterferogram() => Collect.FinalFormatInterferogram();
+        public static Collect CollectFinalFormatAbsorbance() => Collect.FinalFormatAbsorbance();
+        public static Collect CollectFinalFormatSingleBeam() => Collect.FinalFormatSingleBeam();
         public static Collect CollectSaveInterferograms() => Collect.SaveInterferograms();
         public static Collect CollectSaveInterferograms(bool save) => Collect.SaveInterferograms(save);
         public static Collect CollectNumberOfScans() => Collect.NumberOfScans();

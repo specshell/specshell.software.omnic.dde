@@ -23,6 +23,10 @@ namespace Specshell.Omnic.Dde.Commands
             ? new Collect("FinalFormat")
             : new Collect("FinalFormat", format);
 
+        public static Collect FinalFormatInterferogram() => FinalFormat("Interferogram");
+        public static Collect FinalFormatAbsorbance() => FinalFormat("Absorbance");
+        public static Collect FinalFormatSingleBeam() => FinalFormat("SingleBeam");
+
         public static Collect BackgroundFileName(string fileName = "") => string.IsNullOrWhiteSpace(fileName)
             ? new Collect("BackgroundFileName")
             : new Collect("BackgroundFileName", fileName);
