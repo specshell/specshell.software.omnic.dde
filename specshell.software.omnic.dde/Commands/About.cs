@@ -4,7 +4,7 @@
     {
         public string Command => "[About]";
 
-        public string Data { get; } = string.Empty;
+        public string Data => string.Empty;
 
         public CommandType Type => CommandType.Execute;
     }

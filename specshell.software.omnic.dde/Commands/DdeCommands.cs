@@ -2,7 +2,7 @@
 {
     public static class DdeCommands
     {
-        public static About About => new();
+        public static About About() => new();
 
         public static AdvancedAtr AdvancedAtr(
             double crystalRefractiveIndex = 1.36,
@@ -23,10 +23,10 @@
         public static Collect CollectNumberOfScans(int number) => Collect.NumberOfScans(number);
         public static Collect CollectAtmosphericSuppression(bool suppress) => Collect.AtmosphericSuppression(suppress);
         public static CollectSample CollectSample(string sampleTitle = "") => new(sampleTitle);
-        public static Export Export(string path = "") => new (path);
+        public static Export Export(string path = "") => new(path);
         public static DeleteSelectedSpectra DeleteSelectedSpectra() => new();
         public static Display Display(string select = "") => new(select);
-        public static Multiply Multiply(double factor) => new (factor);
+        public static Multiply Multiply(double factor) => new(factor);
         public static ResultCurrent ResultCurrent() => new();
         public static Select Select(string select = "") => new(select);
         public static Select SelectAll() => Commands.Select.All();
@@ -37,7 +37,10 @@
         public static Spectrum SpectrumTitle(string title = "") => Spectrum.Title(title);
         public static Spectrum SpectrumXAxisId() => Spectrum.XAxisId();
         public static Spectrum SpectrumYAxisId() => Spectrum.YAxisId();
+        public static Spectrum SpectrumCollectTime() => Spectrum.CollectTime();
         public static Parameters SaveParameters(string path) => Parameters.SaveParameters(path);
         public static Parameters LoadParameters(string path) => Parameters.LoadParameters(path);
+        public static SerialNumber SerialNumberSpectrometer() => SerialNumber.Spectrometer();
+        public static SerialNumber SerialNumberIrSource() => SerialNumber.IrSource();
     }
 }

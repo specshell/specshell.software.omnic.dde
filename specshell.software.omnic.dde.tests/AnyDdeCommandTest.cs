@@ -15,7 +15,7 @@ namespace Specshell.Omnic.Dde.Tests
         [Fact]
         public void CommandTypeExecuteOverrideTest()
         {
-            var cmd = new AnyDdeCommand("[test]") { Type = CommandType.Request };
+            var cmd = new AnyDdeCommand("[test]") {Type = CommandType.Request};
             Assert.Equal(CommandType.Request, cmd.Type);
         }
 

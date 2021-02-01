@@ -15,8 +15,8 @@ namespace Specshell.Omnic.Dde.Commands
             _save = save;
         }
 
-        public static Parameters SaveParameters(string path) => new(path, true);
-        public static Parameters LoadParameters(string path) => new(path, false);
+        internal static Parameters SaveParameters(string path) => new(path, true);
+        internal static Parameters LoadParameters(string path) => new(path, false);
 
         public string Command
         {
@@ -35,10 +35,8 @@ namespace Specshell.Omnic.Dde.Commands
 
         [DllImport("kernel32.dll", CharSet = CharSet.Unicode)]
         private static extern int GetShortPathName(
-            [MarshalAs(UnmanagedType.LPWStr)]
-            string path,
-            [MarshalAs(UnmanagedType.LPWStr)]
-            StringBuilder shortPath,
+            [MarshalAs(UnmanagedType.LPWStr)] string path,
+            [MarshalAs(UnmanagedType.LPWStr)] StringBuilder shortPath,
             int shortPathLength
         );
     }

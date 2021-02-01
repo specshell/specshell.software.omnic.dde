@@ -19,25 +19,25 @@ namespace Specshell.Omnic.Dde.Commands
             Type = CommandType.Poke;
         }
 
-        public static Collect FinalFormat(string format = "") => string.IsNullOrWhiteSpace(format)
+        internal static Collect FinalFormat(string format = "") => string.IsNullOrWhiteSpace(format)
             ? new Collect("FinalFormat")
             : new Collect("FinalFormat", format);
 
-        public static Collect FinalFormatInterferogram() => FinalFormat("Interferogram");
-        public static Collect FinalFormatAbsorbance() => FinalFormat("Absorbance");
-        public static Collect FinalFormatSingleBeam() => FinalFormat("SingleBeam");
+        internal static Collect FinalFormatInterferogram() => FinalFormat("Interferogram");
+        internal static Collect FinalFormatAbsorbance() => FinalFormat("Absorbance");
+        internal static Collect FinalFormatSingleBeam() => FinalFormat("SingleBeam");
 
-        public static Collect BackgroundFileName(string fileName = "") => string.IsNullOrWhiteSpace(fileName)
+        internal static Collect BackgroundFileName(string fileName = "") => string.IsNullOrWhiteSpace(fileName)
             ? new Collect("BackgroundFileName")
             : new Collect("BackgroundFileName", fileName);
 
-        public static Collect NumberOfScans() => new("NumScans");
-        public static Collect NumberOfScans(int number) => new("NumScans", number.ToString(CultureInfo.InvariantCulture));
+        internal static Collect NumberOfScans() => new("NumScans");
+        internal static Collect NumberOfScans(int number) => new("NumScans", number.ToString(CultureInfo.InvariantCulture));
 
-        public static Collect SaveInterferograms() => new("SaveInterferograms");
-        public static Collect SaveInterferograms(bool save) => new("SaveInterferograms", save ? "TRUE" : "FALSE");
+        internal static Collect SaveInterferograms() => new("SaveInterferograms");
+        internal static Collect SaveInterferograms(bool save) => new("SaveInterferograms", save ? "TRUE" : "FALSE");
 
-        public static Collect AtmosphericSuppression(bool suppress) =>
+        internal static Collect AtmosphericSuppression(bool suppress) =>
             new("Collect DataCorrections", suppress ? "Atmospheric suppression" : "None");
 
         public string Command => $"Collect {_parameter}";

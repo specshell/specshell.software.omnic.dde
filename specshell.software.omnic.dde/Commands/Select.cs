@@ -4,16 +4,16 @@
     {
         private readonly string _select;
 
-        public Select(string select = "")
+        internal Select(string select = "")
         {
             _select = select;
         }
 
-        public static Select All() => new("All");
+        internal static Select All() => new("All");
 
         public string Command => string.IsNullOrWhiteSpace(_select) ? "[Select]" : $"[Select {_select}]";
 
-        public string Data { get; } = string.Empty;
+        public string Data => string.Empty;
 
         public CommandType Type => CommandType.Execute;
     }

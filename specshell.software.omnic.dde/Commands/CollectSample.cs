@@ -4,14 +4,15 @@
     {
         private readonly string _sampleTitle;
 
-        public CollectSample(string sampleTitle = "")
+        internal CollectSample(string sampleTitle = "")
         {
             _sampleTitle = sampleTitle;
         }
 
-        public string Command => string.IsNullOrWhiteSpace(_sampleTitle) ? "[CollectSample]" : "[CollectSample \"\"" + _sampleTitle + "\"\"]";
+        public string Command =>
+            string.IsNullOrWhiteSpace(_sampleTitle) ? "[CollectSample]" : "[CollectSample \"\"" + _sampleTitle + "\"\"]";
 
-        public string Data { get; } = string.Empty;
+        public string Data => string.Empty;
 
         public CommandType Type => CommandType.Execute;
     }
