@@ -25,7 +25,7 @@
         internal static Spectrum CollectTime() => new("CollectTime");
         internal static Spectrum Duration() => new("Duration");
         internal static Spectrum Gain() => new("Gain");
-        internal static Spectrum LaserFrequency() => new("LaserFrequency");
+        internal static Spectrum LaserFrequency() => new("LaserFreq");
         internal static Spectrum MirrorVelocity() => new("Velocity");
         internal static Spectrum NumberOfScans() => new("NumScans");
 
