@@ -9,7 +9,7 @@
             _parameter = parameter;
         }
 
-        internal static SerialNumber Spectrometer() => new("Spectrometer");
+        internal static SerialNumber Bench() => new("Spectrometer");
         internal static SerialNumber IrSource() => new("IRSource");
 
         public string Command => $"SerialNumber {_parameter}";

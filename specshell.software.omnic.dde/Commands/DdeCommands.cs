@@ -29,7 +29,7 @@
         public static Display Display(string select = "") => new(select);
         public static Multiply Multiply(double factor) => new(factor);
         public static ResultCurrent ResultCurrent() => new();
-        public static Reprocess Reprocess() => new Reprocess();
+        public static Reprocess Reprocess() => new();
         public static Select Select(string select = "") => new(select);
         public static Select SelectAll() => Commands.Select.All();
         public static Spectrum SpectrumFirstX() => Spectrum.FirstX();
@@ -42,7 +42,7 @@
         public static Spectrum SpectrumCollectTime() => Spectrum.CollectTime();
         public static Parameters SaveParameters(string path) => Parameters.SaveParameters(path);
         public static Parameters LoadParameters(string path) => Parameters.LoadParameters(path);
-        public static SerialNumber SerialNumberSpectrometer() => SerialNumber.Spectrometer();
-        public static SerialNumber SerialNumberIrSource() => SerialNumber.IrSource();
+        public static SerialNumber BenchSerialNumber() => SerialNumber.Bench();
+        public static SerialNumber IrSourceSerialNumber() => SerialNumber.IrSource();
     }
 }
