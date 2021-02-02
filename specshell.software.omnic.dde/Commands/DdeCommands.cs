@@ -23,8 +23,7 @@
         public static BenchStatus BenchStatusInfraredSourceAmpere() => BenchStatus.InfraredSourceAmpere();
         public static BenchStatus BenchStatusInfraredSourceVolt() => BenchStatus.InfraredSourceVolt();
         public static Collect ColectBackgroundFileName(string fileName = "") => Collect.BackgroundFileName(fileName);
-        public static Collect CollectFinalFormat() => Collect.FinalFormat();
-        public static Collect CollectFinalFormat(string format) => Collect.FinalFormat(format);
+        public static Collect CollectFinalFormat(string format = "") => Collect.FinalFormat(format);
         public static Collect CollectFinalFormatInterferogram() => Collect.FinalFormatInterferogram();
         public static Collect CollectFinalFormatAbsorbance() => Collect.FinalFormatAbsorbance();
         public static Collect CollectFinalFormatSingleBeam() => Collect.FinalFormatSingleBeam();
