@@ -40,6 +40,11 @@
         public static Spectrum SpectrumXAxisId() => Spectrum.XAxisId();
         public static Spectrum SpectrumYAxisId() => Spectrum.YAxisId();
         public static Spectrum SpectrumCollectTime() => Spectrum.CollectTime();
+        public static Spectrum SpectrumDuration() => Spectrum.Duration();
+        public static Spectrum SpectrumGain() => Spectrum.Gain();
+        public static Spectrum SpectrumLaserFrequency() => Spectrum.LaserFrequency();
+        public static Spectrum SpectrumMirrorVelocity() => Spectrum.MirrorVelocity();
+        public static Spectrum SpectrumNumberOfScan() => Spectrum.NumberOfScans();
         public static Parameters SaveParameters(string path) => Parameters.SaveParameters(path);
         public static Parameters LoadParameters(string path) => Parameters.LoadParameters(path);
         public static SerialNumber BenchSerialNumber() => SerialNumber.Bench();
