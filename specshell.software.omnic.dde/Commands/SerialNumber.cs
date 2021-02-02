@@ -10,7 +10,7 @@
         }
 
         internal static SerialNumber Bench() => new("Spectrometer");
-        internal static SerialNumber IrSource() => new("IRSource");
+        internal static SerialNumber InfraredSource() => new("IRSource");
 
         public string Command => $"SerialNumber {_parameter}";
         public string Data => string.Empty;

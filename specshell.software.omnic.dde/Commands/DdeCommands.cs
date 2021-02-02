@@ -12,6 +12,16 @@
             => new(crystalRefractiveIndex, angleOfIncidenceDegrees, numberOfBounces, sampleRefractiveIndex);
 
         public static AutoTune AutoTune() => new();
+        public static BenchStatus BenchStatusBoardTemperature() => BenchStatus.BoardTemperature();
+        public static BenchStatus BenchStatusModulatorTemperature() => BenchStatus.ModulatorTemperature();
+        public static BenchStatus BenchStatusHumidity() => BenchStatus.Humidity();
+        public static BenchStatus BenchStatusLaserMilliampere() => BenchStatus.LaserMilliampere();
+        public static BenchStatus BenchStatusLaserTemperature() => BenchStatus.LaserTemperature();
+        public static BenchStatus BenchStatusLaserR() => BenchStatus.LaserR();
+        public static BenchStatus BenchStatusLaserX() => BenchStatus.LaserX();
+        public static BenchStatus BenchStatusLaserY() => BenchStatus.LaserY();
+        public static BenchStatus BenchStatusInfraredSourceAmpere() => BenchStatus.InfraredSourceAmpere();
+        public static BenchStatus BenchStatusInfraredSourceVolt() => BenchStatus.InfraredSourceVolt();
         public static Collect ColectBackgroundFileName(string fileName = "") => Collect.BackgroundFileName(fileName);
         public static Collect CollectFinalFormat() => Collect.FinalFormat();
         public static Collect CollectFinalFormat(string format) => Collect.FinalFormat(format);
@@ -48,6 +58,6 @@
         public static Parameters SaveParameters(string path) => Parameters.SaveParameters(path);
         public static Parameters LoadParameters(string path) => Parameters.LoadParameters(path);
         public static SerialNumber BenchSerialNumber() => SerialNumber.Bench();
-        public static SerialNumber IrSourceSerialNumber() => SerialNumber.IrSource();
+        public static SerialNumber InfraredSourceSerialNumber() => SerialNumber.InfraredSource();
     }
 }
