@@ -23,6 +23,11 @@
         internal static Spectrum XAxisId() => new("XAxisID");
         internal static Spectrum YAxisId() => new("YAxisID");
         internal static Spectrum CollectTime() => new("CollectTime");
+        internal static Spectrum Duration() => new("Duration");
+        internal static Spectrum Gain() => new("Gain");
+        internal static Spectrum LaserFrequency() => new("LaserFrequency");
+        internal static Spectrum MirrorVelocity() => new("Velocity");
+        internal static Spectrum NumberOfScans() => new("NumScans");
 
         /// <summary>
         /// Command to Retrieve or Set Spectrum Title.
