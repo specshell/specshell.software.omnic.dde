@@ -1,11 +1,7 @@
 ﻿namespace Specshell.Omnic.Dde.Commands
 {
-    public class DeleteSelectedSpectra : IDdeCommand
+    public class DeleteSelectedSpectra : IDdeExecuteCommand
     {
         public string Command => "[DeleteSelectedSpectra]";
-
-        public string Data => string.Empty;
-
-        public CommandType Type => CommandType.Execute;
     }
 }

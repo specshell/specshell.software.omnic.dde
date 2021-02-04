@@ -1,6 +1,6 @@
 ﻿namespace Specshell.Omnic.Dde.Commands
 {
-    public class SerialNumber : IDdeCommand
+    public class SerialNumber : IDdeRequestCommand<string>
     {
         private readonly string _parameter;
 
@@ -9,11 +9,9 @@
             _parameter = parameter;
         }
 
-        internal static SerialNumber Bench() => new("Spectrometer");
-        internal static SerialNumber InfraredSource() => new("IRSource");
+        public static SerialNumber GetBench() => new("Spectrometer");
+        public static SerialNumber GetInfraredSource() => new("IRSource");
 
         public string Command => $"SerialNumber {_parameter}";
-        public string Data => string.Empty;
-        public CommandType Type => CommandType.Request;
     }
 }

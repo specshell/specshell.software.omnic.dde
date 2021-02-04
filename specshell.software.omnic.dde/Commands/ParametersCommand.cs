@@ -4,19 +4,19 @@ using System.Text;
 
 namespace Specshell.Omnic.Dde.Commands
 {
-    public class Parameters : IDdeCommand
+    public class ParametersCommand : IDdeExecuteCommand
     {
         private readonly string _path;
         private readonly bool _save;
 
-        private Parameters(string path, bool save)
+        private ParametersCommand(string path, bool save)
         {
             _path = path;
             _save = save;
         }
 
-        internal static Parameters SaveParameters(string path) => new(path, true);
-        internal static Parameters LoadParameters(string path) => new(path, false);
+        public static ParametersCommand SaveParameters(string path) => new(path, true);
+        public static ParametersCommand LoadParameters(string path) => new(path, false);
 
         public string Command
         {
@@ -30,8 +30,6 @@ namespace Specshell.Omnic.Dde.Commands
             }
         }
 
-        public string Data => string.Empty;
-        public CommandType Type => CommandType.Execute;
 
         [DllImport("kernel32.dll", CharSet = CharSet.Unicode)]
         private static extern int GetShortPathName(

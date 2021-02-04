@@ -1,11 +1,7 @@
 ﻿namespace Specshell.Omnic.Dde.Commands
 {
-    public class Add : IDdeCommand
+    public class Add : IDdeExecuteCommand
     {
         public string Command => "[Add]";
-
-        public string Data => string.Empty;
-
-        public CommandType Type => CommandType.Execute;
     }
 }
