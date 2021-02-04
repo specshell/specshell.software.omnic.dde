@@ -2,15 +2,15 @@
 {
     public static class BenchStatusCommands
     {
-        public static BenchCommandRequest<string> GetBoardTemperature() => new("BoardTemp");
-        public static BenchCommandRequest<string> GetModulatorTemperature() => new("ModulTemp");
-        public static BenchCommandRequest<string> GetHumidity() => new("Humidity");
-        public static BenchCommandRequest<string> GetLaserMilliampere() => new("LaserCur");
-        public static BenchCommandRequest<string> GetLaserTemperature() => new("LaserTemp");
-        public static BenchCommandRequest<string> GetLaserR() => new("LaserR");
-        public static BenchCommandRequest<string> GetLaserX() => new("LaserX");
-        public static BenchCommandRequest<string> GetLaserY() => new("LaserY");
-        public static BenchCommandRequest<string> GetInfraredSourceAmpere() => new("IRSrcCur");
-        public static BenchCommandRequest<string> GetInfraredSourceVolt() => new("IRSrcPwr");
+        public static BenchCommandRequest<float> GetBoardTemperature() => new("BoardTemp");
+        public static BenchCommandRequest<float> GetModulatorTemperature() => new("ModulTemp");
+        public static BenchCommandRequest<float> GetHumidity() => new("Humidity");
+        public static BenchCommandRequest<float> GetLaserMilliampere() => new("LaserCur");
+        public static BenchCommandRequest<float> GetLaserTemperature() => new("LaserTemp");
+        public static BenchCommandRequest<float> GetLaserR() => new("LaserR");
+        public static BenchCommandRequest<float> GetLaserX() => new("LaserX");
+        public static BenchCommandRequest<float> GetLaserY() => new("LaserY");
+        public static BenchCommandRequest<float> GetInfraredSourceAmpere() => new("IRSrcCur");
+        public static BenchCommandRequest<float> GetInfraredSourceVolt() => new("IRSrcPwr");
     }
 }
