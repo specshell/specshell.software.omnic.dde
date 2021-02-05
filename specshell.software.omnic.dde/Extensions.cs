@@ -13,14 +13,16 @@ namespace Specshell.Omnic.Dde
         {
             try
             {
-                var sz = GetShortPathName(path, null!, 0);
+                var fileName = Path.GetFileName(path);
+                var directoryName = Path.GetDirectoryName(path) ?? "";
+                var sz = GetShortPathName(directoryName, null!, 0);
                 if (sz == 0)
                     throw new Win32Exception();
                 var sb = new StringBuilder(sz + 1);
                 sz = GetShortPathName(path, sb, sb.Capacity);
                 if (sz == 0)
                     throw new Win32Exception();
-                return sb.ToString();
+                return $"{sb}\\{fileName}";
             }
             catch
             {
