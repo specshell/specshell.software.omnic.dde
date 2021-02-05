@@ -2,13 +2,11 @@
 {
     public class Export : IDdeExecuteCommand
     {
-        private readonly string _path;
-
         public Export(string path = "")
         {
-            _path = path;
+            Command = string.IsNullOrWhiteSpace(path) ? "[Export]" : $"[Export {path}]";
         }
 
-        public string Command => string.IsNullOrWhiteSpace(_path) ? "[Export]" : $"[Export {_path}]";
+        public string Command { get; }
     }
 }

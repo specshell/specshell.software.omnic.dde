@@ -2,6 +2,11 @@
 {
     public class ResultCurrent : IDdeRequestCommand<string>
     {
-        public string Command => "Result Current";
+        public ResultCurrent()
+        {
+            Command = "Result Current";
+        }
+
+        public string Command { get; }
     }
 }

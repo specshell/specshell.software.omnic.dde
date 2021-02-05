@@ -2,6 +2,11 @@
 {
     public class About : IDdeExecuteCommand
     {
-        public string Command => "[About]";
+        public About()
+        {
+            Command = "[About]";
+        }
+
+        public string Command { get; }
     }
 }

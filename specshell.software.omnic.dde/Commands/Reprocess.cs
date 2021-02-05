@@ -2,6 +2,11 @@
 {
     public class Reprocess : IDdeExecuteCommand
     {
-        public string Command => "[Reprocess]";
+        public Reprocess()
+        {
+            Command = "[Reprocess]";
+        }
+
+        public string Command { get; }
     }
 }

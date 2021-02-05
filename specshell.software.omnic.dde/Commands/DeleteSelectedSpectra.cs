@@ -2,6 +2,11 @@
 {
     public class DeleteSelectedSpectra : IDdeExecuteCommand
     {
-        public string Command => "[DeleteSelectedSpectra]";
+        public DeleteSelectedSpectra()
+        {
+            Command = "[DeleteSelectedSpectra]";
+        }
+
+        public string Command { get; }
     }
 }

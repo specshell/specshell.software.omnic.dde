@@ -2,6 +2,11 @@
 {
     public class Add : IDdeExecuteCommand
     {
-        public string Command => "[Add]";
+        public Add()
+        {
+            Command = "[Add]";
+        }
+
+        public string Command { get; }
     }
 }

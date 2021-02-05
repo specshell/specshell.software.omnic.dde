@@ -2,14 +2,13 @@
 {
     public class CollectSample : IDdeExecuteCommand
     {
-        private readonly string _sampleTitle;
-
         public CollectSample(string sampleTitle = "")
         {
-            _sampleTitle = sampleTitle;
+            Command = string.IsNullOrWhiteSpace(sampleTitle)
+                ? "[CollectSample]"
+                : "[CollectSample \"\"" + sampleTitle + "\"\"]";
         }
 
-        public string Command =>
-            string.IsNullOrWhiteSpace(_sampleTitle) ? "[CollectSample]" : "[CollectSample \"\"" + _sampleTitle + "\"\"]";
+        public string Command { get; }
     }
 }

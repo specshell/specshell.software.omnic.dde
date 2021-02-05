@@ -2,6 +2,11 @@
 {
     public class AutoTune : IDdeExecuteCommand
     {
-        public string Command => "[Invoke AutoTune]";
+        public AutoTune()
+        {
+            Command = "[Invoke AutoTune]";
+        }
+
+        public string Command { get; }
     }
 }
