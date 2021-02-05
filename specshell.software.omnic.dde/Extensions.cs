@@ -11,17 +11,26 @@ namespace Specshell.Omnic.Dde
 
         public static string ToShortPath(this string path)
         {
-            var sz = GetShortPathName(path, null!, 0);
-            if (sz == 0)
-                throw new Win32Exception();
-            var sb = new StringBuilder(sz + 1);
-            sz = GetShortPathName(path, sb, sb.Capacity);
-            if (sz == 0)
-                throw new Win32Exception();
-            return sb.ToString();
+            try
+            {
+                var sz = GetShortPathName(path, null!, 0);
+                if (sz == 0)
+                    throw new Win32Exception();
+                var sb = new StringBuilder(sz + 1);
+                sz = GetShortPathName(path, sb, sb.Capacity);
+                if (sz == 0)
+                    throw new Win32Exception();
+                return sb.ToString();
+            }
+            catch
+            {
+                return path;
+            }
         }
 
-        [DllImport("kernel32.dll", CharSet = CharSet.Unicode)]
+        public static string DoubleDoubleQuote(this string str) => str.Contains(' ') ? $"\"\"{str}\"\"" : str;
+
+        [DllImport("kernel32.dll", CharSet = CharSet.Auto)]
         private static extern int GetShortPathName(
             [MarshalAs(UnmanagedType.LPWStr)] string path,
             [MarshalAs(UnmanagedType.LPWStr)] StringBuilder shortPath,

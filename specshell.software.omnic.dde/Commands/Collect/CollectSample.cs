@@ -6,7 +6,7 @@
         {
             Command = string.IsNullOrWhiteSpace(sampleTitle)
                 ? "[CollectSample]"
-                : "[CollectSample \"\"" + sampleTitle + "\"\"]";
+                : $@"[CollectSample {sampleTitle.DoubleDoubleQuote()}]";
         }
 
         public string Command { get; }

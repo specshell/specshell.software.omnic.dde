@@ -6,7 +6,7 @@
         {
             FullPath = path.ToFullPath();
             ShortPath = FullPath.ToShortPath();
-            Command = $"[{method} {ShortPath}]";
+            Command = $"[{method} {ShortPath.DoubleDoubleQuote()}]";
         }
 
         public string Command { get; }

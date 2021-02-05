@@ -4,7 +4,7 @@
     {
         public Select(string select = "")
         {
-            Command = string.IsNullOrWhiteSpace(select) ? "[Select]" : $"[Select {select}]";
+            Command = string.IsNullOrWhiteSpace(select) ? "[Select]" : $"[Select {select.DoubleDoubleQuote()}]";
         }
 
         public string Command { get; }

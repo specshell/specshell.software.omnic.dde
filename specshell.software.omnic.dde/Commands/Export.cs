@@ -6,7 +6,7 @@
         {
             FullPath = path.ToFullPath();
             ShortPath = FullPath.ToShortPath();
-            Command = string.IsNullOrWhiteSpace(path) ? "[Export]" : $"[Export {ShortPath}]";
+            Command = string.IsNullOrWhiteSpace(path) ? "[Export]" : $"[Export {ShortPath.DoubleDoubleQuote()}]";
         }
 
         public string Command { get; }
