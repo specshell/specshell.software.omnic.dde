@@ -1,4 +1,6 @@
-# Omnic DDE commands #
+# Omnic DDE commands
+
+[![Nuget](https://img.shields.io/nuget/v/Specshell.Omnic.Dde?logo=nuget)](https://www.nuget.org/packages/Specshell.Omnic.Dde)
 
 This repository contains Omnic specific DDE commands that attempt to be strongly typed.\
 An implementation of the omnic DDE client is not part of this repository.
