@@ -3,12 +3,12 @@
     public class AdvancedAtr : IDdeExecuteCommand
     {
         public AdvancedAtr(
-            double crystalRefractiveIndex = 1.36,
-            double angleOfIncidenceDegrees = 2.40,
+            double sampleRefractiveIndex = 1.36,
+            double crystalRefractiveIndex = 2.40,
             double numberOfBounces = 1.0,
-            double sampleRefractiveIndex = 45.0)
+            double angleOfIncidence = 45.0)
         {
-            Command = $"[AdvancedATR {crystalRefractiveIndex} {angleOfIncidenceDegrees} {numberOfBounces} {sampleRefractiveIndex}]";
+            Command = $"[AdvancedATR {sampleRefractiveIndex} {crystalRefractiveIndex} {numberOfBounces} {angleOfIncidence}]";
         }
 
         public string Command { get; }
