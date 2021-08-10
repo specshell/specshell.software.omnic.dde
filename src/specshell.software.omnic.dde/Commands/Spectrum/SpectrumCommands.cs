@@ -15,6 +15,7 @@
         public static SpectrumCommandRequest<double> GetMirrorVelocity() => new("Velocity");
         public static SpectrumCommandRequest<int> GetNumberOfScans() => new("NumScans");
         public static SpectrumCommandRequest<string> GetTitle() => new("Title");
+        public static SpectrumCommandRequest<string> GetHistory() => new("History");
         public static SpectrumCommandPoke SetTitle(string title = "") => new("Title", title);
     }
 }
