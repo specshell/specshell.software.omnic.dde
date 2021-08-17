@@ -12,7 +12,7 @@ namespace Specshell.Omnic.Dde.Commands.Collect
         public static CollectCommandPoke SetFinalFormatSingleBeam() => SetFinalFormat("SingleBeam");
 
         public static CollectCommandRequest<string> GetBackgroundFileName() => new("BackgroundFileName");
-        public static CollectCommandPoke SetBackgroundFileName(string fileName) => new("BackgroundFileName", fileName);
+        public static CollectCommandPoke SetBackgroundFileName(string fileName) => new("BackgroundFileName", fileName.ToShortPath());
 
         public static CollectCommandRequest<int> GetNumberOfScans() => new("NumScans");
         public static CollectCommandPoke SetNumberOfScans(int number) => new("NumScans", number.ToString(CultureInfo.InvariantCulture));
