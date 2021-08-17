@@ -4,7 +4,7 @@
     {
         public Display(string windowTitle = "")
         {
-            Command = string.IsNullOrWhiteSpace(windowTitle) ? "[Display]" : $"[Display {windowTitle.DoubleDoubleQuote()}]";
+            Command = string.IsNullOrWhiteSpace(windowTitle) ? "[Display]" : $"[Display {windowTitle.DoubleQuote()}]";
         }
 
         public string Command { get; }
