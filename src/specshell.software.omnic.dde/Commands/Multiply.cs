@@ -2,7 +2,7 @@
 {
     public class Multiply : IDdeExecuteCommand
     {
-        public Multiply(double factor = 0d)
+        public Multiply(float factor)
         {
             Command = $"[Multiply {factor}]";
         }
