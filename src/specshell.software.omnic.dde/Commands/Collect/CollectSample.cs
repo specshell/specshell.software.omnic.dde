@@ -5,8 +5,8 @@
         public CollectSample(string sampleTitle = "")
         {
             Command = string.IsNullOrWhiteSpace(sampleTitle)
-                ? "[CollectSample]"
-                : $@"[CollectSample {sampleTitle.DoubleQuote()}]";
+                ? "[Invoke CollectSample Auto]"
+                : $@"[Invoke CollectSample {sampleTitle.DoubleQuote()} Auto]";
         }
 
         public string Command { get; }
