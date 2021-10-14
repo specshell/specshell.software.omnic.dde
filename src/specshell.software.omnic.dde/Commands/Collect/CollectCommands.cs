@@ -14,6 +14,13 @@ namespace Specshell.Omnic.Dde.Commands.Collect
         public static CollectCommandRequest<string> GetBackgroundFileName() => new("BackgroundFileName");
         public static CollectCommandPoke SetBackgroundFileName(string fileName) => new("BackgroundFileName", fileName.ToShortPath());
 
+        public static CollectCommandRequest<string> GetBackgroundHandling() => new("BackgroundHandling");
+        public static CollectCommandPoke SetBackgroundHandlingToBeforeCollect() => new("BackgroundHandling", "BeforeCol");
+        public static CollectCommandPoke SetBackgroundHandlingToAfterCollect() => new("BackgroundHandling", "AfterCol");
+        public static CollectCommandPoke SetBackgroundHandlingToFile() => new("BackgroundHandling", "ThisBkg");
+        public static CollectCommandPoke SetBackgroundHandlingToAge() => new("BackgroundHandling", "AfterTime");
+        public static CollectCommandPoke SetBackgroundMaxAge(int minutes) => new("MaxBackgroundAge", $"{minutes}");
+
         public static CollectCommandRequest<int> GetNumberOfScans() => new("NumScans");
         public static CollectCommandPoke SetNumberOfScans(int number) => new("NumScans", number.ToString(CultureInfo.InvariantCulture));
 
