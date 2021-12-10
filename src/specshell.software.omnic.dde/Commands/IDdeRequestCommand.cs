@@ -1,6 +1,5 @@
-﻿namespace Specshell.Omnic.Dde.Commands
+﻿namespace Specshell.Omnic.Dde.Commands;
+
+public interface IDdeRequestCommand<out T> : IDdeCommand where T : notnull
 {
-    public interface IDdeRequestCommand<out T> : IDdeCommand where T : notnull
-    {
-    }
 }

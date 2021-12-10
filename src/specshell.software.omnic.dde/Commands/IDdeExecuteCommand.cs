@@ -1,6 +1,5 @@
-﻿namespace Specshell.Omnic.Dde.Commands
+﻿namespace Specshell.Omnic.Dde.Commands;
+
+public interface IDdeExecuteCommand : IDdeCommand
 {
-    public interface IDdeExecuteCommand : IDdeCommand
-    {
-    }
 }

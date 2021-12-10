@@ -1,12 +1,11 @@
-﻿namespace Specshell.Omnic.Dde.Commands.MenuStatus
-{
-    public class MenuStatusCommand : IDdeRequestCommand<string>
-    {
-        public MenuStatusCommand(string parameter)
-        {
-            Command = $"MenuStatus {parameter}";
-        }
+﻿namespace Specshell.Omnic.Dde.Commands.MenuStatus;
 
-        public string Command { get; }
+public class MenuStatusCommand : IDdeRequestCommand<string>
+{
+    public MenuStatusCommand(string parameter)
+    {
+        Command = $"MenuStatus {parameter}";
     }
+
+    public string Command { get; }
 }

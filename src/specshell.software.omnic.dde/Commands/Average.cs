@@ -1,12 +1,11 @@
-﻿namespace Specshell.Omnic.Dde.Commands
-{
-    public class Average : IDdeExecuteCommand
-    {
-        public Average()
-        {
-            Command = "[Average]";
-        }
+﻿namespace Specshell.Omnic.Dde.Commands;
 
-        public string Command { get; }
+public class Average : IDdeExecuteCommand
+{
+    public Average()
+    {
+        Command = "[Average]";
     }
+
+    public string Command { get; }
 }
