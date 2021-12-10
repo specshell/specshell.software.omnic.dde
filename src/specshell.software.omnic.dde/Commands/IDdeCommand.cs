@@ -1,7 +1,6 @@
-﻿namespace Specshell.Omnic.Dde.Commands
+﻿namespace Specshell.Omnic.Dde.Commands;
+
+public interface IDdeCommand
 {
-    public interface IDdeCommand
-    {
-        string Command { get; }
-    }
+    string Command { get; }
 }

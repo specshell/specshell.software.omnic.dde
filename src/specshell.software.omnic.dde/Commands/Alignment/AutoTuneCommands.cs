@@ -1,7 +1,6 @@
-﻿namespace Specshell.Omnic.Dde.Commands.Alignment
+﻿namespace Specshell.Omnic.Dde.Commands.Alignment;
+
+public static class AutoTuneCommands
 {
-    public static class AutoTuneCommands
-    {
-        public static AutoTune AutoTune() => new();
-    }
+    public static AutoTune AutoTune() => new();
 }
