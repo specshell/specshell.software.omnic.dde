@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <Authors>Spechell</Authors>
+    <Authors>Specshell</Authors>
     <Company>Specshell</Company>
     <Description>DDE commands for OMNIC</Description>
     <PackageTags>DDE commands for OMNIC</PackageTags>
@@ -19,6 +19,7 @@
   <PropertyGroup Condition=" '$(GITHUB_ACTIONS)' == 'true'">
     <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <PackageOutputPath>$(GITHUB_WORKSPACE)\output\nuget</PackageOutputPath>
   </PropertyGroup>
 
   <ItemGroup>
